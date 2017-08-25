@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="Dao"/>
+
+    <!-- c3p0连接池  -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+        <property name="jdbcUrl" value="jdbc:sqlserver://localhost;database=CodeFirstDB" />
+        <property name="user" value="Alex" />
+        <property name="password" value="Wei13248" />
+        <property name="minPoolSize" value="5" />
+        <property name="maxPoolSize" value="50" />
+        <property name="maxStatements" value="100" />
+        <property name="initialPoolSize" value="5" />
+        <property name="idleConnectionTestPeriod" value="60" />
+    </bean>
+
+    <!-- 创建sessionFactory -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.url">jdbc:sqlserver://localhost;database=CodeFirstDB</prop>
+                <prop key="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>Entity.UserDetailEntity</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 配置事物管理器，在*ServiceImpl里写@Transactional就可以启用事物管理 -->
+    <bean name="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+</beans>
