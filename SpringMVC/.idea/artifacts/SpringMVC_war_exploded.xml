@@ -77,6 +77,8 @@
           <element id="library" level="project" name="Maven: org.springframework.plugin:spring-plugin-metadata:1.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: io.springfox:springfox-swagger-ui:2.4.0" />
           <element id="library" level="project" name="Maven: org.jetbrains:annotations:15.0" />
+          <element id="library" level="project" name="Maven: net.sf.dozer:dozer:5.4.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.6.6" />
         </element>
       </element>
       <element id="directory" name="META-INF">

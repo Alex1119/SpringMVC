@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.ViewModel.Response;
 import org.jetbrains.annotations.NotNull;
 
 public class BaseController {

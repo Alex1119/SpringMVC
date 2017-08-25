@@ -5,47 +5,45 @@ import javax.persistence.*;
 @Entity
 @Table(name = "UserDetail", schema = "dbo", catalog = "CodeFirstDB")
 public class UserDetailEntity {
-    private int id;
-    private String userId;
-    private String userName;
+    private int Id;
+    private String UserId;
+    private String UserName;
 
-    public UserDetailEntity(String userId, String userName) {
-        this.userId = userId;
-        this.userName = userName;
-    }
+    public UserDetailEntity(){}
 
-    public UserDetailEntity() {
+    public UserDetailEntity(String UserId, String UserName){
+        this.UserId = UserId;
+        this.UserName = UserName;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = new Integer(id);
+        this.Id = id;
     }
 
     @Basic
     @Column(name = "UserID", nullable = true, length = 50)
     public String getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId;
+        this.UserId = userId;
     }
 
     @Basic
     @Column(name = "UserName", nullable = true, length = 50)
     public String getUserName() {
-        return userName;
+        return UserName;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.UserName = userName;
     }
 
     @Override
@@ -55,18 +53,18 @@ public class UserDetailEntity {
 
         UserDetailEntity entity = (UserDetailEntity) o;
 
-        if (id != entity.id) return false;
-        if (userId != null ? !userId.equals(entity.userId) : entity.userId != null) return false;
-        if (userName != null ? !userName.equals(entity.userName) : entity.userName != null) return false;
+        if (Id != entity.Id) return false;
+        if (UserId != null ? !UserId.equals(entity.UserId) : entity.UserId != null) return false;
+        if (UserName != null ? !UserName.equals(entity.UserName) : entity.UserName != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        int result = Id;
+        result = 31 * result + (UserId != null ? UserId.hashCode() : 0);
+        result = 31 * result + (UserName != null ? UserName.hashCode() : 0);
         return result;
     }
 }
