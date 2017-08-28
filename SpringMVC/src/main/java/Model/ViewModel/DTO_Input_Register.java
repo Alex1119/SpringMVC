@@ -1,6 +1,6 @@
 package Model.ViewModel;
 
-public class DTO_Input_Register {
+public class DTO_Input_Register extends BaseToken {
 
     public String UserId;
 

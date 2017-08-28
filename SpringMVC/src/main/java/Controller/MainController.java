@@ -1,5 +1,6 @@
 package Controller;
 
+import Common.AuthorizeAnnotation;
 import Dao.UserRepository;
 import Entity.UserDetailEntity;
 import Model.ViewModel.Response;
@@ -12,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 public class MainController extends BaseController{
 
@@ -21,6 +25,7 @@ public class MainController extends BaseController{
     @Autowired
     public Mapper _Mapper;
 
+    @AuthorizeAnnotation
     @ApiOperation(value = "添加用户信息", notes = "添加用户信息接口的注释")
     @ResponseBody
     @RequestMapping(value = "/Add", method = RequestMethod.POST, produces = { "application/json;charset=UTF-8;" })
@@ -32,7 +37,8 @@ public class MainController extends BaseController{
     @ApiOperation(value = "获取用户信息", notes = "获取用户信息接口的注释")
     @ResponseBody
     @RequestMapping(value = "/Detail", method = RequestMethod.POST, produces = { "application/json;charset=UTF-8;" })
-    public Response<DTO_Output_UserDetail> GetUserDetail(@ApiParam(value = "参数名") @RequestBody String viewModel){
+    public Response<DTO_Output_UserDetail> GetUserDetail(HttpServletRequest request, HttpServletResponse response,
+                                                         @ApiParam(value = "参数名") @RequestBody String viewModel){
         UserDetailEntity entity = _UserRepository.GetUserDetail(viewModel);
         DTO_Output_UserDetail result = DTO_Output_UserDetail.ConvertFrom(_Mapper, entity);
         return ResponseData(result);
