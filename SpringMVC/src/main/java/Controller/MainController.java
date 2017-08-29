@@ -1,11 +1,11 @@
 package Controller;
 
-import Common.AuthorizeAnnotation;
+import Common.Authorirze.AuthorizeAnnotation;
 import Dao.UserRepository;
 import Entity.UserDetailEntity;
-import Model.ViewModel.Response;
-import Model.ViewModel.DTO_Input_Register;
-import Model.ViewModel.DTO_Output_UserDetail;
+import Model.Response;
+import Model.DTO_Input_Register;
+import Model.DTO_Output_UserDetail;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.dozer.Mapper;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@AuthorizeAnnotation
 @Controller
 public class MainController extends BaseController{
 
@@ -25,7 +26,6 @@ public class MainController extends BaseController{
     @Autowired
     public Mapper _Mapper;
 
-    @AuthorizeAnnotation
     @ApiOperation(value = "添加用户信息", notes = "添加用户信息接口的注释")
     @ResponseBody
     @RequestMapping(value = "/Add", method = RequestMethod.POST, produces = { "application/json;charset=UTF-8;" })

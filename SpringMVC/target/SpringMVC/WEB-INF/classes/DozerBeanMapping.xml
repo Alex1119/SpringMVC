@@ -15,18 +15,6 @@
     </configuration>
     <mapping date-format="yyyy-MM-dd">
         <class-a>Entity.UserDetailEntity</class-a>
-        <class-b>Model.ViewModel.DTO_Output_UserDetail</class-b>
-        <!--<field>-->
-            <!--<a>id</a>-->
-            <!--<b>Id</b>-->
-        <!--</field>-->
-        <!--<field>-->
-            <!--<a>userId</a>-->
-            <!--<b>UserId</b>-->
-        <!--</field>-->
-        <!--<field>-->
-            <!--<a>userName</a>-->
-            <!--<b>UserName</b>-->
-        <!--</field>-->
+        <class-b>Model.DTO_Output_UserDetail</class-b>
     </mapping>
 </mappings>

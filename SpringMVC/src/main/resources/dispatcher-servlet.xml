@@ -12,7 +12,7 @@
     <mvc:default-servlet-handler/>
 
     <!-- 强制使用cglib代理，如果不设置，将默认使用jdk的代理，但是jdk的代理是基于接口的 -->
-    <aop:config proxy-target-class="true" />
+    <!--<aop:config proxy-target-class="true" />-->
 
     <aop:aspectj-autoproxy />
 
@@ -20,5 +20,13 @@
         <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <!-- 验签拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean class="Common.Authorirze.AuthorizeInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
