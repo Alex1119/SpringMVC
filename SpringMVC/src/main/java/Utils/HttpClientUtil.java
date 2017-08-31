@@ -210,7 +210,7 @@ public class HttpClientUtil {
                 e.printStackTrace();
             }
         }
-        System.out.println("responseContent = " + responseContent);
+//        System.out.println("responseContent = " + responseContent);
         return responseContent;
     }
 

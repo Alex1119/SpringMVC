@@ -6,7 +6,7 @@
     <bean id="mapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
         <property name="mappingFiles">
             <list>
-                <value>classpath*:/DozerBeanMapping.xml</value>
+                <value>classpath*:/dozerBeanMapping.xml</value>
             </list>
         </property>
     </bean>

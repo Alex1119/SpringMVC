@@ -2,10 +2,12 @@ package Controller;
 
 import Common.Authorirze.AuthorizeAnnotation;
 import Dao.UserRepository;
+import Entity.HealthTraceEntity;
 import Entity.UserDetailEntity;
 import Model.Response;
 import Model.DTO_Input_Register;
 import Model.DTO_Output_UserDetail;
+import Service.ThirdPartService;
 import Utils.HttpClientUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -28,6 +31,9 @@ public class MainController extends BaseController{
 
     @Autowired
     public UserRepository _UserRepository;
+
+    @Autowired
+    public ThirdPartService _ThirdPartService;
 
     @Autowired
     public Mapper _Mapper;
@@ -47,18 +53,7 @@ public class MainController extends BaseController{
                                                          @ApiParam(value = "参数名") @RequestBody String viewModel){
         UserDetailEntity entity = _UserRepository.GetUserDetail(viewModel);
         DTO_Output_UserDetail result = DTO_Output_UserDetail.ConvertFrom(_Mapper, entity);
-
-        Map params = new TreeMap<String, Object>();
-        params.put("AccountId", "26d60997-f9b5-42fb-b36d-8a44a430ac8a");
-        Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
-
-        String postResult = HttpClientUtil.getInstance().httpPost("http://hzd6tx24d2/ZSTJ/api/V3/HealthTrace/HealthTraceList",
-                gson.toJson(params),
-                new HashMap<String, String>(){{
-                    put("Content-Type","application/json; charset=UTF-8" );
-                    put("Accept","application/json" );
-                    put("Authorization","123" );
-                }});
+        List<HealthTraceEntity> a = _ThirdPartService.GetHealthTraceList();
         return ResponseData(result);
     }
 

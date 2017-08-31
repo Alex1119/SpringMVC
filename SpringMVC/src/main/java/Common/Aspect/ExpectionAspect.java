@@ -32,9 +32,9 @@ public class ExpectionAspect {
     }
 
     //    抛出异常后通知
-    @AfterThrowing("pointCut()")
-    public void afterThrowingLog() {
-        System.out.println("方法抛出异常后执行通知,记录日志");
+    @AfterThrowing(value = "pointCut()", throwing = "ex")
+    public void afterThrowingLog(Exception ex) {
+        System.out.println("方法抛出异常后执行通知,记录日志: \n" + ex);
     }
 
 //    //    环绕通知

@@ -7,6 +7,9 @@
 
     <context:component-scan base-package="Dao"/>
 
+    <context:component-scan base-package="Service"/>
+
     <context:component-scan base-package="Common"/>
+
 
 </beans>
