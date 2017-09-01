@@ -15,6 +15,6 @@
     </configuration>
     <mapping date-format="yyyy-MM-dd">
         <class-a>Entity.UserDetailEntity</class-a>
-        <class-b>Model.DTO_Output_UserDetail</class-b>
+        <class-b>Model.ViewModel.DTO_Output_UserDetail</class-b>
     </mapping>
 </mappings>

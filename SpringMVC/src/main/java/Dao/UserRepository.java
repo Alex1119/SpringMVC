@@ -11,6 +11,7 @@ import java.util.*;
 import java.util.function.Predicate;
 
 
+@Transactional
 @Repository
 public class UserRepository extends BaseRepository{
 
@@ -22,7 +23,6 @@ public class UserRepository extends BaseRepository{
         return _SessionFactory;
     }
 
-    @Transactional
     public boolean AddUserDetailEntity(String UserId, String UserName){
         try{
             _SessionFactory.getCurrentSession().save(new UserDetailEntity(UserId, UserName));
@@ -33,14 +33,12 @@ public class UserRepository extends BaseRepository{
         return true;
     }
 
-    @Transactional
     public UserDetailEntity GetUserDetailEntity(int UserID){
         UserDetailEntity userDetailEntity = (UserDetailEntity)_SessionFactory.getCurrentSession()
                 .get(UserDetailEntity.class, UserID);
         return userDetailEntity;
     }
 
-    @Transactional
     public UserDetailEntity GetUserDetail(String UserID){
         UserDetailEntity entity = null;
         try{
