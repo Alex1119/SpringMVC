@@ -61,14 +61,18 @@ public class AuthorizeInterceptor extends HandlerInterceptorAdapter {
     }
 
     // 未通过验证，返回提示json
-    private void UnAuthorizeHandler(HttpServletResponse response) throws IOException {
+    private void UnAuthorizeHandler(HttpServletResponse response) {
         Response responseData = new Response(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase(),null);
         String json = new GsonBuilder()
                 .serializeNulls().create()
                 .toJson(responseData);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        response.getWriter().write(json);
+        try {
+            response.getWriter().write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

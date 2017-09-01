@@ -1,4 +1,4 @@
-package Entity;
+package Entity.SqlServer;
 
 import java.util.ArrayList;
 

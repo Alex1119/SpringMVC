@@ -1,6 +1,6 @@
 package Model.ViewModel;
 
-import Entity.UserDetailEntity;
+import Entity.SqlServer.UserDetailEntity;
 import org.dozer.Mapper;
 import org.jetbrains.annotations.Contract;
 

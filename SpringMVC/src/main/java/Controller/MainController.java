@@ -1,8 +1,9 @@
 package Controller;
 
 import Common.Authorirze.AuthorizeAnnotation;
-import Entity.HealthTraceEntity;
-import Entity.UserDetailEntity;
+import Dao.Mongo.test;
+import Entity.SqlServer.HealthTraceEntity;
+import Entity.SqlServer.UserDetailEntity;
 import Model.Response;
 import Model.ViewModel.DTO_Input_Register;
 import Model.ViewModel.DTO_Output_UserDetail;

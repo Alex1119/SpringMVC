@@ -1,4 +1,4 @@
-package Entity;
+package Entity.SqlServer;
 
 import javax.persistence.*;
 
@@ -17,6 +17,7 @@ public class UserDetailEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     public int getId() {
         return Id;

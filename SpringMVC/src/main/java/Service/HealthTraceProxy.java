@@ -1,18 +1,11 @@
 package Service;
 
-import Entity.HealthTraceEntity;
-import Entity.HealthTraceList;
-import Entity.UserDetailEntity;
+import Entity.SqlServer.HealthTraceEntity;
 import Model.Response;
 import Utils.GsonUtil;
-import Utils.HttpClientUtil;
 import com.google.common.reflect.TypeToken;
-import com.google.gson.*;
 import org.springframework.stereotype.Service;
-import springfox.documentation.spring.web.json.Json;
-import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.*;
 

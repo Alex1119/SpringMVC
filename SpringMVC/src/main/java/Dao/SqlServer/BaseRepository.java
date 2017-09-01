@@ -1,4 +1,4 @@
-package Dao;
+package Dao.SqlServer;
 
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;

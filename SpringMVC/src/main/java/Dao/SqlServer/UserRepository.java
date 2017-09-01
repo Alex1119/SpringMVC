@@ -1,6 +1,6 @@
-package Dao;
+package Dao.SqlServer;
 
-import Entity.UserDetailEntity;
+import Entity.SqlServer.UserDetailEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;

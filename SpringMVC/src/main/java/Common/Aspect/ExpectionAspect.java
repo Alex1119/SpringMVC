@@ -1,8 +1,17 @@
 package Common.Aspect;
 
+import Model.Response;
+import com.google.gson.GsonBuilder;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Aspect
 @Service
@@ -34,7 +43,8 @@ public class ExpectionAspect {
     //    抛出异常后通知
     @AfterThrowing(value = "pointCut()", throwing = "ex")
     public void afterThrowingLog(Exception ex) {
-        System.out.println("方法抛出异常后执行通知,记录日志: \n" + ex);
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+        InternalErrorHandler(response, ex);
     }
 
 //    //    环绕通知
@@ -57,4 +67,20 @@ public class ExpectionAspect {
 //        }
 //        return result;
 //    }
+
+    private void InternalErrorHandler(HttpServletResponse response, Exception ex){
+        // TODO: 记录错误日志
+        Response responseData = new Response(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(),null);
+        String json = new GsonBuilder()
+                .serializeNulls().create()
+                .toJson(responseData);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
+        try {
+            response.getWriter().write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

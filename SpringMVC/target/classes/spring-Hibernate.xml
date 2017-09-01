@@ -37,7 +37,7 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>Entity.UserDetailEntity</value>
+                <value>Entity.SqlServer.UserDetailEntity</value>
             </list>
         </property>
     </bean>
