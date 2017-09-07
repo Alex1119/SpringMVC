@@ -1,25 +1,25 @@
 package Controller;
 
 import Common.Authorirze.AuthorizeAnnotation;
-import Dao.Mongo.test;
 import Entity.SqlServer.HealthTraceEntity;
 import Entity.SqlServer.UserDetailEntity;
 import Model.Response;
 import Model.ViewModel.DTO_Input_Register;
 import Model.ViewModel.DTO_Output_UserDetail;
-import Service.HealthTraceProxy;
+import Service.Proxy.HealthTraceProxy;
 import Service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @AuthorizeAnnotation
-@Controller
+@Controller@Scope("request")
 public class MainController extends BaseController{
 
     @Autowired

@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
@@ -12,7 +13,7 @@ import java.util.function.Predicate;
 
 
 @Transactional
-@Repository
+@Repository@Scope("request")
 public class UserRepository extends BaseRepository{
 
     @Autowired

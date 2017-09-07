@@ -3,9 +3,10 @@ package Service;
 import Dao.SqlServer.UserRepository;
 import Entity.SqlServer.UserDetailEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service@Scope("request")
 public class UserService {
 
     @Autowired

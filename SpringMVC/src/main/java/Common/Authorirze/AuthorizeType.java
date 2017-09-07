@@ -6,5 +6,5 @@ public enum AuthorizeType {
     Authority,
 
     // 不验证权限
-    NoAuthority;
+    NoAuthority
 }

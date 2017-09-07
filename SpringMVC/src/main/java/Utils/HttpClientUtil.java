@@ -214,6 +214,7 @@ public class HttpClientUtil {
         return responseContent;
     }
 
+
 //    /**
 //     * http的post请求
 //     *
@@ -258,7 +259,7 @@ public class HttpClientUtil {
      * @param paramsJson
      * @throws Exception
      */
-    private void setPostParams(HttpPost httpPost,String paramsJson)
+    public void setPostParams(HttpPost httpPost, String paramsJson)
             throws Exception {
         HttpEntity entity = new StringEntity(paramsJson, ContentType.APPLICATION_JSON);
         httpPost.setEntity(entity);
@@ -293,7 +294,7 @@ public class HttpClientUtil {
      * @param httpPost
      * @param headMap
      */
-    private void setPostHead(HttpPost httpPost, Map<String, String> headMap) {
+    public void setPostHead(HttpPost httpPost, Map<String, String> headMap) {
         if (headMap != null && headMap.size() > 0) {
             Set<String> keySet = headMap.keySet();
             for (String key : keySet) {
@@ -324,7 +325,7 @@ public class HttpClientUtil {
      * @return
      * @throws Exception
      */
-    private String getRespString(HttpEntity entity) throws Exception {
+    public String getRespString(HttpEntity entity) throws Exception {
         if (entity == null) {
             return null;
         }

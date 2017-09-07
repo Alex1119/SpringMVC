@@ -3,6 +3,7 @@ package Common.Aspect;
 import Model.Response;
 import com.google.gson.GsonBuilder;
 import org.aspectj.lang.annotation.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Aspect
-@Service
+@Service@Scope("request")
 @Order(1) // 数字越小,优先级越高
 public class ExpectionAspect {
 

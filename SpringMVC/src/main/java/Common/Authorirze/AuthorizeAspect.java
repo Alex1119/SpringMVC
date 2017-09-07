@@ -2,6 +2,7 @@ package Common.Authorirze;
 
 import Model.BaseToken;
 import org.aspectj.lang.annotation.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
 import java.util.TreeMap;
 
-@Service
 @Aspect
+@Service@Scope("request")
 @Order(2) // 数字越小,优先级越高
 public class AuthorizeAspect {
 
@@ -59,3 +60,4 @@ public class AuthorizeAspect {
 
 
 }
+

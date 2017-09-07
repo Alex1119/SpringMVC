@@ -1,7 +1,5 @@
 package Entity.SqlServer;
 
-import java.util.ArrayList;
-
 public class HealthTraceEntity {
 
     private String Id;
